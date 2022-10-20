@@ -17,12 +17,6 @@ h1{
   text-align: center;
 }
 
-img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 h2{
   font-size: 32px;
   line-height: 1.5;
@@ -51,6 +45,9 @@ nav a:hover{
   -webkit-transition: top 1s ease-out;
   transition: top 1s ease-out;
   z-index: 1;
+  top: -40px;
+  left: 500px;
+  position:relative;
   /*Your code here - position relative to the parent */
   /*Your code here - place 500px left and 40px higher */;
 }
@@ -64,6 +61,8 @@ nav a:hover{
   transition: top 1s ease-out;
   z-index: 1;
   position: absolute;
+  top: 0px;
+  left: 500px;
 }
 
 /*Your code here*/
@@ -71,6 +70,9 @@ nav a:hover{
 /*Add the selector and rule to move the skip
 link to the exact top of the page.*/
 
+*:focus{
+  border: 2px solid black;
+}
 /*Your code here*/
 /*Add the selector and code to put a 2px black
 border around all elements in focus.*/
@@ -87,7 +89,9 @@ footer{
 nav{
   background-color: #ddd;
   padding: 20px 0;
-  text-align: center;
+  text-align: left;
+  grid-row: 1;
+  grid-column: 1/-1;
   /*Your code here*/
   /*Span the top row*/
 }
@@ -98,10 +102,14 @@ header{
   background-repeat: no-repeat; /* Parallax effect */
   background-size: cover;       /* Parallax effect */
   color: white;
-  min-height: 400px;                /* Parallax effect */
+  height: 400px;                /* Parallax effect */
   background-color: #DDDDDD, #858585, #707070, #B3B3B3;
-  background: 'header.jpg';
-  background-size: cover;
+  background-image: url("../images/header.jpg");
+  grid-row: 2;
+  grid-column: 1/-1;
+  /* Your code here */
+  /* Set background-image to header.jpg in the images folder */
+  /* Span one row */
 }
 
 header p{
@@ -116,37 +124,46 @@ header p{
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   row-gap: 30px;
-  overflow: hidden;
+  /*Your code here  */
+  /* See documentation for mobile view */
 }
 
 .about, .method, .clients, .contact{
-  grid-column: 2;
+  grid-column: 2/span 1;
+  /*Your code here */
+  /* See documentation for mobile view */
 }
 
 .about-image, .method-image, .clients-image, .contact-image{
-  grid-column: span 4;
-  width: 100%;
+  grid-column: 1/span 3;
   max-height: 500px;
+  overflow: hidden;
+   /*Your code here */
+   /* See documentation for mobile view */
 }
 
 .about, .about-image{
-  width: 100%;
-  display: inline-block;
+  grid-row: 3/span 1;
+  /*Your code here */
+  /* See documentation for mobile view */
 }
 
 .method, .method-image{
-  width: 100%;
-  display: inline-block;
+  grid-row: 4/span 1;
+  /*Your code here */
+  /* See documentation for mobile view */
 }
 
 .clients, .clients-image{
-  width: 100%;
-  display: inline-block;
+  grid-row: 5/span 1;
+  /*Your code here */
+  /* See documentation for mobile view */
 }
 
 .contact, .contact-image{
-  width: 100%;
-  display: inline-block;
+  grid-row: 6/span 1;
+  /*Your code here */
+  /* See documentation for mobile view */
 }
 
 .text-block{
@@ -155,38 +172,35 @@ header p{
   padding: 30px;
   position: relative;
   margin: auto;
-  text-align: center;
-  max-height: 25% vw;
+  align-self: center;
+  max-height: 25vh;
   overflow: scroll;
+  /*Your code here:*/
+  /*Align the content in the center */
 }
 
 @media all and (min-width: 800px){
 
   .container{
     display: grid;
-    grid-template-columns: 50px, auto, 500px, auto, 50px;
-    grid-template-rows: 70px, 400px, 400px, 400px, 400px, 400px, 100px;
+    grid-template-columns: 50px auto 500px auto 50px;
+    grid-template-rows: 70px 400px 400px 400px 400px 400px 100px;
+    /*Your code here */
+    /* See documentation for desktop view */
   }
-
-  .container{
-    width: 90%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    row-gap: 30px;
-  }
-
 
   nav{
     background-color: #ddd;
     text-align: right;
     padding: 35px 0px;
-    align-self: right;
+    align-self: center;
   }
 
    .about, .clients, .method-image, .contact-image {
-    grid-column: span 3;
+    grid-column: span 2;
     max-height: 500px;
+    /*Your code here */
+    /* See documentation for desktop view */
   }
 
   .container > .about, .clients, .method-image, .contact-image{
@@ -195,9 +209,10 @@ header p{
 
   .method, .contact, .about-image, .clients-image {
     grid-column: 2/span 2;
+    /*Your code here */
+    /* See documentation for desktop view */
   }
-}
-/*End the media query*/
+}  /*End the media query*/
 
 @media screen and (prefers-reduced-motion: reduce){
   html{
